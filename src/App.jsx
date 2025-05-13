@@ -9,16 +9,7 @@ export default function App() {
     setSelectedGuest(guest);
   };
 
-  if (loading) return <p>loading...</p>;
-  if (error || !guests) return <p>{error}</p>;
 
-  return (
-    <>
-      <h1>Guest List</h1>
-      <GuestList guests={guests}/>
-    </>
-  );
-}
 
 function GuestDetails() {
   if (!selectedGuest) {
@@ -35,4 +26,15 @@ function GuestDetails() {
       <p>Phone: {selectedGuest.phone}</p>
     </section>
   );
+}
+if (loading) return <p>loading...</p>;
+if (error || !guests) return <p>{error}</p>;
+
+return (
+  <>
+    <h1>Guest List</h1>
+    <GuestList guests={guests} onGuestSelect={handleGuestSelect}/>
+    <GuestDetails />
+  </>
+);
 }
